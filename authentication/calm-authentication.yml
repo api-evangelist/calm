@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/calm-partner-api-openapi.yml
+docs: https://partner.calm.com/docs/api
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: CalmOAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.calm.com/v0/authorize
+    scopes: 2
+  description: OAuth 2.0 client-credentials grant against the Calm auth service.
+  sources:
+  - openapi/calm-partner-api-openapi.yml
