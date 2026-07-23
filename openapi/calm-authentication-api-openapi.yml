@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Calm Partner Authentication API
+  version: v0
+  description: The Calm Partner API is the OAuth 2.0 client-credentials REST surface that powers Calm Business and Calm Health B2B integrations. Partner systems (HR platforms, benefits administrators, and health plans) use it to authenticate, provision and link a Calm subscription for one of their users, and cancel that subscription to prevent auto-renewal. It complements Calm's SAML 2.0 IdP-initiated SSO and SFTP eligibility-file mechanisms documented in the Partner Portal.
+  contact:
+    name: Calm Partner Support
+    url: https://partner.calm.com/docs/api
+  x-apisjson-source: https://partner.calm.com/docs/api
+  x-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://partner.calm.com/docs/api
+servers:
+- url: https://auth.calm.com
+  description: Production
+- url: https://auth-ga.aws-dev.useast1.calm.com
+  description: Development
+tags:
+- name: Authentication
+  description: Obtain a JWT access token via OAuth 2.0 client credentials.
+paths:
+  /v0/authorize:
+    post:
+      operationId: authorize
+      summary: Authenticate partner service
+      description: Authenticate a partner service with Calm's auth service using the OAuth 2.0 client-credentials grant to obtain a JWT access token used on subsequent B2B calls.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeRequest'
+      responses:
+        '200':
+          description: Access token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeResponse'
+        '403':
+          description: Invalid authorization or invalid scope.
+components:
+  schemas:
+    AuthorizeResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          enum:
+          - Bearer
+        expires_at:
+          type: number
+        token_id:
+          type: string
+    AuthorizeRequest:
+      type: object
+      required:
+      - client_id
+      - client_secret
+      - grant_type
+      - scope
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        grant_type:
+          type: string
+          enum:
+          - client_credentials
+        scope:
+          type: string
+          description: Comma-delimited scopes, e.g. "b2b.users.integrate,b2b.subscription.cancel".
+  securitySchemes:
+    CalmOAuth2:
+      type: oauth2
+      description: OAuth 2.0 client-credentials grant against the Calm auth service.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.calm.com/v0/authorize
+          scopes:
+            b2b.users.integrate: Provision and link partner users to Calm subscriptions.
+            b2b.subscription.cancel: Cancel partner-user Calm subscriptions.
