@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: derived
+source:
+- openapi/calm-partner-api-openapi.yml
+- https://partner.calm.com/docs/sso
+standards:
+- id: oauth2
+  conforms: true
+  evidence: openapi securitySchemes type oauth2 (clientCredentials flow at /v0/authorize)
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: partner services authenticate with client_id/client_secret grant_type=client_credentials
+- id: saml2
+  conforms: true
+  evidence: Partner SSO uses SAML 2.0 IdP-initiated flow (partner.calm.com/docs/sso)
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors returned as bare HTTP status codes, not application/problem+json
+- id: rfc8594-sunset
+  conforms: false
+- id: json-api
+  conforms: false
+- id: scim2
+  conforms: false
+  evidence: user provisioning is via bespoke link/cancel endpoints and SFTP eligibility files, not SCIM

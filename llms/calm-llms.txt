@@ -1,0 +1,25 @@
+# Calm
+
+> Calm is a consumer mental-wellness company (guided meditations, Sleep Stories, breathing, mindfulness, soundscapes) whose B2B products — Calm Business and Calm Health — are powered by the Calm Partner API, an OAuth 2.0 client-credentials REST surface for provisioning, linking, and cancelling Calm subscriptions on behalf of partner members. Backed by Lightspeed Venture Partners.
+
+## APIs
+
+- [Calm Partner API](https://partner.calm.com/docs/api): OAuth 2.0 client-credentials REST API to authenticate, link a partner user to a Calm subscription, and cancel a subscription. Production base URL https://auth.calm.com.
+
+## Specs
+
+- [Calm Partner API OpenAPI](https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/openapi/calm-partner-api-openapi.yml): OpenAPI 3.1 for the three Partner API operations (authorize, linkUser, cancelUser).
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/authentication/calm-authentication.yml)
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/scopes/calm-scopes.yml): b2b.users.integrate, b2b.subscription.cancel.
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/errors/calm-problem-types.yml)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/conventions/calm-conventions.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/data-model/calm-data-model.yml)
+
+## Docs
+
+- [Partner API reference](https://partner.calm.com/docs/api)
+- [Partner SSO (SAML 2.0)](https://partner.calm.com/docs/sso)
+- [Calm Business](https://business.calm.com/)
+- [Help Center](https://support.calm.com/hc/en-us)
+- [Status page](https://status.calm.com)
+- [Privacy policy](https://www.calm.com/privacy)

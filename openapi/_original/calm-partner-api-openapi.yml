@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: Calm Partner API
+  version: v0
+  description: >-
+    The Calm Partner API is the OAuth 2.0 client-credentials REST surface that
+    powers Calm Business and Calm Health B2B integrations. Partner systems (HR
+    platforms, benefits administrators, and health plans) use it to authenticate,
+    provision and link a Calm subscription for one of their users, and cancel that
+    subscription to prevent auto-renewal. It complements Calm's SAML 2.0
+    IdP-initiated SSO and SFTP eligibility-file mechanisms documented in the
+    Partner Portal.
+  contact:
+    name: Calm Partner Support
+    url: https://partner.calm.com/docs/api
+  x-apisjson-source: https://partner.calm.com/docs/api
+  x-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://partner.calm.com/docs/api
+servers:
+  - url: https://auth.calm.com
+    description: Production
+  - url: https://auth-ga.aws-dev.useast1.calm.com
+    description: Development
+tags:
+  - name: Authentication
+    description: Obtain a JWT access token via OAuth 2.0 client credentials.
+  - name: Subscriptions
+    description: Link and cancel partner-user Calm subscriptions.
+paths:
+  /v0/authorize:
+    post:
+      operationId: authorize
+      summary: Authenticate partner service
+      description: >-
+        Authenticate a partner service with Calm's auth service using the OAuth
+        2.0 client-credentials grant to obtain a JWT access token used on
+        subsequent B2B calls.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeRequest'
+      responses:
+        '200':
+          description: Access token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizeResponse'
+        '403':
+          description: Invalid authorization or invalid scope.
+  /v0/b2b/users/link:
+    post:
+      operationId: linkUser
+      summary: Link a partner user to a Calm subscription
+      description: >-
+        Link a partner user to a Calm subscription and redirect the user into the
+        Calm login/signup flow. Returns a 303 redirect whose Location carries a
+        calm-link-token; pass pseudo_redirect=1 to receive the redirect target in
+        a 200 JSON body instead.
+      tags:
+        - Subscriptions
+      security:
+        - CalmOAuth2:
+            - b2b.users.integrate
+      parameters:
+        - name: pseudo_redirect
+          in: query
+          required: false
+          description: When set to 1, return the redirect target as JSON instead of a 303.
+          schema:
+            type: integer
+            enum:
+              - 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkRequest'
+      responses:
+        '200':
+          description: Pseudo-redirect response (when pseudo_redirect=1).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkPseudoResponse'
+        '303':
+          description: Redirect to the Calm login/signup landing page.
+          headers:
+            Location:
+              description: Redirect URL carrying calm-link-token (and support_url / user-id when applicable).
+              schema:
+                type: string
+        '400':
+          description: Invalid request.
+        '401':
+          description: Unauthorized.
+  /v0/b2b/users/{partner_user_id}:
+    delete:
+      operationId: cancelUser
+      summary: Cancel a partner user subscription
+      description: >-
+        Cancel a partner user's Calm subscription, preventing auto-renewal. Returns
+        the resolved calm_user_id and expiry when a subscription existed, or a
+        not_found status otherwise.
+      tags:
+        - Subscriptions
+      security:
+        - CalmOAuth2:
+            - b2b.subscription.cancel
+      parameters:
+        - name: partner_user_id
+          in: path
+          required: true
+          description: The partner-generated GUID identifying the user.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cancellation processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelResponse'
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    CalmOAuth2:
+      type: oauth2
+      description: OAuth 2.0 client-credentials grant against the Calm auth service.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.calm.com/v0/authorize
+          scopes:
+            b2b.users.integrate: Provision and link partner users to Calm subscriptions.
+            b2b.subscription.cancel: Cancel partner-user Calm subscriptions.
+  schemas:
+    AuthorizeRequest:
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - grant_type
+        - scope
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        grant_type:
+          type: string
+          enum:
+            - client_credentials
+        scope:
+          type: string
+          description: Comma-delimited scopes, e.g. "b2b.users.integrate,b2b.subscription.cancel".
+    AuthorizeResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          enum:
+            - Bearer
+        expires_at:
+          type: number
+        token_id:
+          type: string
+    LinkRequest:
+      type: object
+      required:
+        - partner_user_id
+      properties:
+        partner_user_id:
+          type: string
+          description: Partner-generated GUID for the user.
+        error_url:
+          type: string
+          description: Optional custom error-page redirect.
+    LinkPseudoResponse:
+      type: object
+      properties:
+        redirect_location:
+          type: string
+    CancelResponse:
+      type: object
+      properties:
+        partner_user_id:
+          type: string
+        calm_user_id:
+          type: string
+        expires:
+          type: string
+        status:
+          type: string
+          enum:
+            - canceled
+            - not_found

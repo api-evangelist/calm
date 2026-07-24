@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/calm-partner-api-openapi.yml
+docs: https://partner.calm.com/docs/api
+notes: >-
+  The Partner API documents a single comma-delimited scope string
+  "b2b.users.integrate,b2b.subscription.cancel" requested at the /v0/authorize
+  client-credentials endpoint.
+schemes:
+- name: CalmOAuth2
+  source: openapi/calm-partner-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.calm.com/v0/authorize
+  description: OAuth 2.0 client-credentials grant against the Calm auth service.
+scopes:
+- scope: b2b.subscription.cancel
+  description: Cancel partner-user Calm subscriptions.
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/calm-partner-api-openapi.yml
+- scope: b2b.users.integrate
+  description: Provision and link partner users to Calm subscriptions.
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/calm-partner-api-openapi.yml

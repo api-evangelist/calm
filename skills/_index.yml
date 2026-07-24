@@ -1,0 +1,11 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/calm-partner-api-openapi.yml
+skills:
+- file: calm-provision-and-cancel.md
+  name: Provision and cancel a Calm subscription for a partner user
+  api: openapi/calm-partner-api-openapi.yml
+  operations:
+  - authorize
+  - linkUser
+  - cancelUser

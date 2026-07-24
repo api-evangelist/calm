@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/calm-partner-api-openapi.yml
+notes: >-
+  No official hosted/remote Calm MCP server was found. This is a candidate tool
+  list derived one-to-one from the Calm Partner API operations.
+server:
+  name: calm-partner
+  transport: stdio
+tools:
+- name: authorize
+  description: Authenticate the partner service and obtain a Bearer JWT access token.
+  source_operation: openapi/calm-partner-api-openapi.yml#authorize
+- name: link_user
+  description: Link a partner user to a Calm subscription and get the login/signup redirect.
+  source_operation: openapi/calm-partner-api-openapi.yml#linkUser
+- name: cancel_user
+  description: Cancel a partner user's Calm subscription to prevent auto-renewal.
+  source_operation: openapi/calm-partner-api-openapi.yml#cancelUser

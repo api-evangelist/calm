@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of Calm hosts
+notes: >-
+  No /.well-known/ discovery documents were served on the Calm partner, auth, or
+  marketing hosts as of the probe date. Absence is recorded as valid data.
+hosts:
+- host: https://auth.calm.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://calm.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 308
+    note: redirects to https://www.calm.com/.well-known/security.txt which returns 404
+  - path: /.well-known/api-catalog
+    status: 308
+    note: redirect; no catalog served
+- host: https://partner.calm.com
+  documents:
+  - path: /llms.txt
+    status: 404

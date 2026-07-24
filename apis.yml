@@ -1,8 +1,16 @@
 aid: calm
 name: Calm
-description: Calm is a company surfaced as a portfolio company of lightspeed-venture-partners and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Calm is a leading consumer mental-wellness company whose app offers guided
+  meditations, Sleep Stories, breathing programs, mindfulness masterclasses, and
+  soundscapes. Beyond the direct-to-consumer app, Calm sells two B2B products:
+  Calm Business, which delivers the Calm experience to employers as an employee
+  wellness benefit, and Calm Health, a clinical mental-health offering for health
+  plans and large self-insured employers. Both are powered by the Calm Partner
+  API, an OAuth 2.0 client-credentials REST surface that partner HR and benefits
+  systems use to provision, link, and cancel Calm subscriptions for their members,
+  alongside SAML 2.0 IdP-initiated SSO and SFTP eligibility-file uploads. Calm is
+  a portfolio company of Lightspeed Venture Partners.
 url: https://raw.githubusercontent.com/api-evangelist/calm/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,14 +18,116 @@ x-backed-by:
 - lightspeed-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://www.calm.com/favicon.ico
 tags:
 - Company
-apis: []
+- Mental Health
+- Wellness
+- Meditation
+- Mindfulness
+- Sleep
+- Employee Benefits
+- Health
+- B2B
+- Subscriptions
+apis:
+- aid: calm:calm-authentication-api
+  name: Calm Authentication API
+  description: Obtain a JWT access token via OAuth 2.0 client credentials.
+  humanURL: https://partner.calm.com/docs/api
+  baseURL: https://auth.calm.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/calm-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://partner.calm.com/docs/api
+  - type: APIReference
+    url: https://partner.calm.com/docs/api
+- aid: calm:calm-subscriptions-api
+  name: Calm Subscriptions API
+  description: Link and cancel partner-user Calm subscriptions.
+  humanURL: https://partner.calm.com/docs/api
+  baseURL: https://auth.calm.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/calm-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://partner.calm.com/docs/api
+  - type: APIReference
+    url: https://partner.calm.com/docs/api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DeveloperPortal
+  url: https://partner.calm.com/
+- type: Documentation
+  url: https://partner.calm.com/docs/api
+- type: APIReference
+  url: https://partner.calm.com/docs/api
+- type: GettingStarted
+  url: https://partner.calm.com/docs/api
+- type: Support
+  url: https://support.calm.com/hc/en-us
+- type: StatusPage
+  url: https://status.calm.com
+- type: PrivacyPolicy
+  url: https://www.calm.com/privacy
+- type: Pricing
+  url: https://business.calm.com/
+- type: OpenAPI
+  url: openapi/calm-partner-api-openapi.yml
+- type: Authentication
+  url: authentication/calm-authentication.yml
+- type: OAuthScopes
+  url: scopes/calm-scopes.yml
+- type: AgenticAccess
+  url: agentic-access/calm-agentic-access.yml
+- type: DomainSecurity
+  url: security/calm-domain-security.yml
+- type: WellKnown
+  url: well-known/calm-well-known.yml
+- type: Conventions
+  url: conventions/calm-conventions.yml
+- type: ErrorCatalog
+  url: errors/calm-problem-types.yml
+- type: Conformance
+  url: conformance/calm-conformance.yml
+- type: Lifecycle
+  url: lifecycle/calm-lifecycle.yml
+- type: DataModel
+  url: data-model/calm-data-model.yml
+- type: Sandbox
+  url: sandbox/calm-sandbox.yml
+- type: MCPServer
+  url: mcp/calm-mcp.yml
+- type: LLMsTxt
+  url: llms/calm-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

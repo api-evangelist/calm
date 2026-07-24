@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/calm-partner-api-openapi.yml
+entities:
+- name: partner_service
+  description: The partner client authenticated via client_credentials.
+  identifiers:
+  - client_id
+  - token_id
+- name: partner_user
+  description: A user in the partner's system, identified by a partner-generated GUID.
+  identifiers:
+  - partner_user_id
+- name: calm_user
+  description: The Calm account linked to a partner user once they log in / sign up.
+  identifiers:
+  - calm_user_id
+- name: subscription
+  description: The Calm subscription provisioned for a linked partner user; carries expiry and status.
+  fields:
+  - expires
+  - status
+relationships:
+- from: partner_user
+  to: calm_user
+  type: has_one
+  via: link (calm-link-token)
+- from: calm_user
+  to: subscription
+  type: has_one
+  via: b2b provisioning
+- from: partner_service
+  to: partner_user
+  type: has_many
+  via: partner_user_id

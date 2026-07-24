@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: searched
+source:
+- https://partner.calm.com/docs/api
+- https://status.calm.com
+versioning:
+  scheme: uri-path
+  current: v0
+  docs: https://partner.calm.com/docs/api
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.calm.com
+status_page_provider: Atlassian Statuspage
+status_page_components:
+- Calm Mobile App
+- Calm Web App
+- Calm Health Mobile App
+- Calm Health Web App
+- Partner Portal
+deprecated_operations: []

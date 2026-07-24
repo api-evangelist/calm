@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://partner.calm.com/docs/api
+notes: >-
+  The Calm Partner API publishes a distinct Development environment separate from
+  Production. Partners test provisioning/link/cancel flows against the dev host
+  using dev-issued client credentials. Calm does not publish magic test user IDs
+  or fixture values; no test values are invented here.
+environments:
+- name: development
+  base_url: https://auth-ga.aws-dev.useast1.calm.com
+  purpose: Partner integration testing.
+- name: production
+  base_url: https://auth.calm.com
+credentials:
+  model: >-
+    Separate client_id / client_secret pairs are issued per environment by Calm
+    Partner onboarding. No publicly documented shared test credentials.
+test_values:
+  documented: false

@@ -1,0 +1,43 @@
+generated: '2026-07-18'
+method: derived
+source:
+- https://partner.calm.com/docs/api
+- openapi/calm-partner-api-openapi.yml
+notes: >-
+  Cross-cutting request/response semantics for the Calm Partner API, derived from
+  the Partner API reference and OpenAPI. The surface is small (auth + link + cancel)
+  so most enterprise conventions (pagination, expansion, idempotency keys) are not
+  applicable.
+authentication:
+  style: oauth2-client-credentials
+  token_endpoint: https://auth.calm.com/v0/authorize
+  token_type: Bearer (JWT)
+  header: 'Authorization: Bearer {access_token}'
+  scopes:
+  - b2b.users.integrate
+  - b2b.subscription.cancel
+  reference: authentication/calm-authentication.yml
+versioning:
+  style: uri-path
+  current: v0
+  example: /v0/b2b/users/link
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key header is documented. Cancellation is naturally idempotent
+    at the semantic level (a second DELETE returns status not_found), but no
+    Idempotency-Key contract is published.
+pagination:
+  supported: false
+  notes: The API exposes no list/collection endpoints.
+error_handling:
+  envelope: http-status
+  problem_json: false
+  reference: errors/calm-problem-types.yml
+redirects:
+  notes: >-
+    POST /v0/b2b/users/link returns a 303 redirect (Location carries a
+    calm-link-token); pass pseudo_redirect=1 to receive the redirect target as a
+    200 JSON body (redirect_location) instead.
+rate_limiting:
+  documented: false

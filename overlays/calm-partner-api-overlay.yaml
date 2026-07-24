@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Calm Partner API
+  version: 1.0.0
+extends: openapi/calm-partner-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-18'
+    x-apievangelist-source: https://partner.calm.com/docs/api
+    x-apievangelist-category: Mental Health & Wellness
+- target: $.info
+  update:
+    x-agentic-access: agentic-access/calm-agentic-access.yml
+- target: $.paths['/v0/b2b/users/link'].post
+  update:
+    x-apievangelist-note: >-
+      Returns a 303 redirect by default; pass pseudo_redirect=1 for a 200 JSON
+      body carrying redirect_location for programmatic agents.
+- target: $.paths['/v0/b2b/users/{partner_user_id}'].delete
+  update:
+    x-apievangelist-note: >-
+      Semantically idempotent — a repeat cancel returns status not_found rather
+      than erroring.

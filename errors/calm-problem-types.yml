@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/calm-partner-api-openapi.yml
+format: http-status
+notes: >-
+  Derived from the documented 4xx responses of the Calm Partner API. Calm does not
+  publish an RFC 9457 problem+json envelope; errors are returned as HTTP status
+  codes with a short reason described in the Partner API reference.
+problems:
+- status: 400
+  title: Invalid request
+  remediation: Verify the JSON request body and required fields (partner_user_id).
+  source_operation: openapi/calm-partner-api-openapi.yml#linkUser
+- status: 401
+  title: Unauthorized
+  remediation: Obtain a fresh Bearer access token from POST /v0/authorize and retry.
+  source_operations:
+  - openapi/calm-partner-api-openapi.yml#linkUser
+  - openapi/calm-partner-api-openapi.yml#cancelUser
+- status: 403
+  title: Invalid authorization or invalid scope
+  remediation: >-
+    Check client_id/client_secret and that the requested scope string matches the
+    scopes granted to the partner (b2b.users.integrate,b2b.subscription.cancel).
+  source_operation: openapi/calm-partner-api-openapi.yml#authorize
