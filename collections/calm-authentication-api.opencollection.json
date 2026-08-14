@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Calm Partner Authentication API",
+    "version": "0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authorize Partner Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.calm.com/v0/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange a provisioned client_id and client_secret for a short-lived JWT access token. The token is required to authenticate subsequent Partner API calls."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

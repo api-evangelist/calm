@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "cb2591ae-6bc4-491e-9617-57a8a9f5d2e4",
+      "name": "Authentication",
+      "description": {
+        "content": "OAuth 2.0 client credentials for partner services.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32c23ba0-1f7d-43bf-9ad5-ecf83e936415",
+          "name": "Authorize Partner Service",
+          "request": {
+            "name": "Authorize Partner Service",
+            "description": {
+              "content": "Exchange a provisioned client_id and client_secret for a short-lived JWT access token. The token is required to authenticate subsequent Partner API calls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"grant_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e89f532-e351-4af8-8be6-51a0ae0b2d4b",
+              "name": "Access token issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"grant_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"Bearer\",\n  \"expires_at\": 5366,\n  \"token_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3fe28b3-ec77-4a98-8564-2c24fa15f19a",
+              "name": "Invalid client credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"grant_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.calm.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "37844c77-0944-4375-a4de-56b22e39bd52",
+    "name": "Calm Partner Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner API for Calm Business and Calm Health partners. Provisions and manages Calm subscriptions for partner end users via OAuth 2.0 client credentials. Three operations cover the full subscription lifecycle: authorize the partner service, link a partner user to a Calm subscription, and cancel an existing subscription. Credentials are issued by Calm's B2B Engineering Team.\n\nContact Support:\n Name: Calm B2B Engineering Team",
+      "type": "text/plain"
+    }
+  }
+}
