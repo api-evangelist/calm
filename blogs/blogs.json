@@ -1,5 +1,5 @@
 {
-  "repo": "calm-com",
+  "repo": "calm",
   "feeds": [
     {
       "source": "https://www.calm.com/privacy",
@@ -7,9 +7,23 @@
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://www.calm.com/terms",
+      "feed_url": "https://www.calm.com/terms",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://support.calm.com",
+      "feed_url": "https://support.calm.com",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-08-06T14:08:46Z",
+  "fetched": "2026-08-15T12:22:01Z",
   "post_count": 41,
   "agent_pulled": "2026-07-04"
 }
