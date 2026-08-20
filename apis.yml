@@ -41,6 +41,17 @@ tags:
 - Employee Benefits
 - Health
 - B2B
+- Subscription
+tags_raw:
+- Company
+- Mental Health
+- Wellness
+- Meditation
+- Mindfulness
+- Sleep
+- Employee Benefits
+- Health
+- B2B
 - Subscriptions
 apis:
 - aid: calm:calm-authentication-api
@@ -63,6 +74,8 @@ apis:
   humanURL: https://partner.calm.com/docs/api
   baseURL: https://auth.calm.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
