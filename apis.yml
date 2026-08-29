@@ -102,6 +102,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/calm-capability-edges.yml
+  name: Calm Business Capability Map
 - type: Overlay
   url: overlays/calm-partner-api-overlay.yaml
 - type: DeveloperPortal
