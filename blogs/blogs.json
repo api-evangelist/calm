@@ -2,13 +2,6 @@
   "repo": "calm",
   "feeds": [
     {
-      "source": "https://www.calm.com/privacy",
-      "feed_url": "https://www.calm.com/privacy",
-      "title": "",
-      "saved": 0,
-      "method": "none"
-    },
-    {
       "source": "https://www.calm.com/terms",
       "feed_url": "https://www.calm.com/terms",
       "title": "",
@@ -21,9 +14,16 @@
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://www.calm.com/privacy",
+      "feed_url": "https://www.calm.com/privacy",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 41,
   "agent_pulled": "2026-07-04",
   "feed_nature": "vendor-blog",
