@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Calm Partner Authentication Subscriptions API
+  title: Calm Partner Subscriptions API
   version: v0
   description: The Calm Partner API is the OAuth 2.0 client-credentials REST surface that powers Calm Business and Calm Health B2B integrations. Partner systems (HR platforms, benefits administrators, and health plans) use it to authenticate, provision and link a Calm subscription for one of their users, and cancel that subscription to prevent auto-renewal. It complements Calm's SAML 2.0 IdP-initiated SSO and SFTP eligibility-file mechanisms documented in the Partner Portal.
   contact:
@@ -91,6 +91,20 @@ paths:
           description: Unauthorized.
 components:
   schemas:
+    CancelResponse:
+      type: object
+      properties:
+        partner_user_id:
+          type: string
+        calm_user_id:
+          type: string
+        expires:
+          type: string
+        status:
+          type: string
+          enum:
+          - canceled
+          - not_found
     LinkPseudoResponse:
       type: object
       properties:
@@ -107,20 +121,6 @@ components:
         error_url:
           type: string
           description: Optional custom error-page redirect.
-    CancelResponse:
-      type: object
-      properties:
-        partner_user_id:
-          type: string
-        calm_user_id:
-          type: string
-        expires:
-          type: string
-        status:
-          type: string
-          enum:
-          - canceled
-          - not_found
   securitySchemes:
     CalmOAuth2:
       type: oauth2

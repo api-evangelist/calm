@@ -2,9 +2,8 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/calm-partner-api-openapi.yml
-notes: >-
-  No official hosted/remote Calm MCP server was found. This is a candidate tool
-  list derived one-to-one from the Calm Partner API operations.
+notes: No official hosted/remote Calm MCP server was found. This is a candidate tool list derived one-to-one
+  from the Calm Partner API operations.
 server:
   name: calm-partner
   transport: stdio
@@ -18,3 +17,9 @@ tools:
 - name: cancel_user
   description: Cancel a partner user's Calm subscription to prevent auto-renewal.
   source_operation: openapi/calm-partner-api-openapi.yml#cancelUser
+deployment:
+  mode: none
+  verified: derived
+  tools: 3
+  checked: '2026-08-12'
+  source: catalog MCP census
