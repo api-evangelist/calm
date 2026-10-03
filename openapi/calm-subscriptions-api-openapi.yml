@@ -91,6 +91,22 @@ paths:
           description: Unauthorized.
 components:
   schemas:
+    LinkRequest:
+      type: object
+      required:
+      - partner_user_id
+      properties:
+        partner_user_id:
+          type: string
+          description: Partner-generated GUID for the user.
+        error_url:
+          type: string
+          description: Optional custom error-page redirect.
+    LinkPseudoResponse:
+      type: object
+      properties:
+        redirect_location:
+          type: string
     CancelResponse:
       type: object
       properties:
@@ -105,22 +121,6 @@ components:
           enum:
           - canceled
           - not_found
-    LinkPseudoResponse:
-      type: object
-      properties:
-        redirect_location:
-          type: string
-    LinkRequest:
-      type: object
-      required:
-      - partner_user_id
-      properties:
-        partner_user_id:
-          type: string
-          description: Partner-generated GUID for the user.
-        error_url:
-          type: string
-          description: Optional custom error-page redirect.
   securitySchemes:
     CalmOAuth2:
       type: oauth2
