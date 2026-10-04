@@ -44,6 +44,19 @@ paths:
           description: Invalid authorization or invalid scope.
 components:
   schemas:
+    AuthorizeResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          enum:
+          - Bearer
+        expires_at:
+          type: number
+        token_id:
+          type: string
     AuthorizeRequest:
       type: object
       required:
@@ -63,19 +76,6 @@ components:
         scope:
           type: string
           description: Comma-delimited scopes, e.g. "b2b.users.integrate,b2b.subscription.cancel".
-    AuthorizeResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-          enum:
-          - Bearer
-        expires_at:
-          type: number
-        token_id:
-          type: string
   securitySchemes:
     CalmOAuth2:
       type: oauth2
