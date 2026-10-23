@@ -5,7 +5,7 @@
       "source": "https://blog.calm.com",
       "feed_url": "https://blog.calm.com/blog?format=rss",
       "title": "",
-      "saved": 9,
+      "saved": 0,
       "method": "discovered"
     },
     {
@@ -14,6 +14,20 @@
       "title": "",
       "saved": 0,
       "method": "discovered"
+    },
+    {
+      "source": "https://blog.calm.com/blog?format=rss",
+      "feed_url": "https://blog.calm.com/blog?format=rss",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.calm.com/blog/feed/",
+      "feed_url": "https://www.calm.com/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     },
     {
       "source": "https://www.calm.com/terms",
@@ -28,16 +42,10 @@
       "title": "",
       "saved": 0,
       "method": "none"
-    },
-    {
-      "source": "https://support.calm.com",
-      "feed_url": "",
-      "saved": 0,
-      "skipped": "community-shaped; a vendor feed already saved this run (roadmap#239)"
     }
   ],
-  "fetched": "2026-10-10T13:15:00Z",
-  "post_count": 50,
+  "fetched": "2026-10-17T14:53:57Z",
+  "post_count": 60,
   "agent_pulled": "2026-07-04",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
