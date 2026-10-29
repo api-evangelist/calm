@@ -64,6 +64,163 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Calm is a company surfaced as a portfolio company of lightspeed-venture-partners and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Calm is a leading consumer mental-wellness company whose app offers guided meditations, Sleep Stories, breathing programs, mindfulness masterclasses, and soundscapes. Beyond the direct-to-consumer app, Calm sells two B2B products: Calm Business, which delivers the Calm experience to employers as an employee wellness benefit, and Calm Health, a clinical mental-health offering for health plans and large self-insured employers. Both are powered by the Calm Partner API, an OAuth 2.0 client-credentials REST surface that partner HR and benefits systems use to provision, link, and cancel Calm subscriptions for their members, alongside SAML 2.0 IdP-initiated SSO and SFTP eligibility-file uploads. Calm is a portfolio company of Lightspeed Venture Partners.
 
-Backed by: lightspeed-venture-partners
+**Areas:** Company · Mental Health · Wellness · Meditation · Mindfulness · Sleep · Employee Benefits · Health · B2B · Subscription
+
+## Calm on APIs.io
+
+Everything profiled for Calm is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/calm/](https://apis.io/providers/calm/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Calm Authentication API](https://apis.io/apis/calm/calm-authentication-api/) — Obtain a JWT access token via OAuth 2.0 client credentials.
+- [Calm Subscriptions API](https://apis.io/apis/calm/calm-subscriptions-api/) — Link and cancel partner-user Calm subscriptions.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [calm-partner](https://apis.io/servers/calm/calm-partner/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Calm Agentic Access](https://apis.io/agentic-access/calm/calm-agentic-access/)
+
+#### JSON Schema (2)
+
+The data models the API reads and writes.
+
+- [Calm Eligibility File Row](https://apis.io/schemas/calm/calm-eligibility-file/)
+- [Calm Partner User](https://apis.io/schemas/calm/calm-partner-user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Calm Context](https://apis.io/jsonld/calm/calm-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Calm Vocabulary](https://apis.io/vocabularies/calm/calm-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Calm Authorize Example](https://apis.io/examples/calm/calm-authorize-example/)
+- [Calm Cancel User Example](https://apis.io/examples/calm/calm-cancel-user-example/)
+- [Calm Link User Example](https://apis.io/examples/calm/calm-link-user-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Calm Partner Authentication API](https://apis.io/collections/calm/open-calm-authentication-api/)
+- [Calm Partner API](https://apis.io/collections/calm/open-calm-partner-api/)
+- [Calm Partner Authentication Subscriptions API](https://apis.io/collections/calm/open-calm-subscriptions-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Calm Partner Api Overlay](https://apis.io/overlays/calm/calm-partner-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Calm — jsonschema rules](https://apis.io/rules/calm/calm-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Calm Authentication](https://apis.io/security/calm/calm-authentication/)
+- [Calm Domain Security](https://apis.io/security/calm/calm-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Calm Scopes](https://apis.io/scopes/calm/calm-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.calm.com)
+- [Documentation](https://partner.calm.com/docs/api)
+- [Getting started](https://partner.calm.com/docs/api)
+- [API reference](https://partner.calm.com/docs/api)
+- [Pricing](https://business.calm.com/)
+- [Support](https://support.calm.com/hc/en-us)
+- [Blog](https://blog.calm.com)
+- [Trust centre](https://health.calm.com/trust)
+- [Terms of service](https://www.calm.com/terms)
+- [Privacy policy](https://www.calm.com/privacy)
+- [GitHub](https://github.com/calm)
+- [Status](https://status.calm.com)
+
+## API Evangelist rating
+
+**Kin Score 50.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 74.1 |
+| Contract quality | 56.0 |
+| Contract governance | 14.4 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 44.7 |
+
+**Agent readiness 25.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 32.8** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/calm/](https://apis.io/providers/calm/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Calm: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/calm/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
